@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+development:
+  <<: *default
+  database: classofmadmoo_development
+
+test:
+  <<: *default
+  database: classofmadmoo_test
+
+production:
+  <<: *default
+  database: classofmadmoo_production
+  username: classofmadmoo
+  password: 
