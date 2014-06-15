@@ -3,5 +3,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  belongs_to :user_role  
+  belongs_to :user_role
+  
+  def profesor?
+    self.user_role.profesor?
+  end
+  
+  def student?
+    self.user_role.student?
+  end
 end

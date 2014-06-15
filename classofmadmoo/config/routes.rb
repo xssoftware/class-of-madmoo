@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :projects
 
+  get "dashboard/:id" => "teams#dashboard", as: "dashboard"
   resources :teams
 
   devise_for :users
