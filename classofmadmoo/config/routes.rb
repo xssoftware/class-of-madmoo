@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "dashboard/:id" => "teams#dashboard", as: "dashboard"
   resources :teams
 
+  resources :posts
+
   devise_for :users
   get 'home/index'
 
