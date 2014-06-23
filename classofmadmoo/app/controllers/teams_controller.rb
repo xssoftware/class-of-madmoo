@@ -7,7 +7,8 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
   def dashboard
-    
+    team = Team.find(params[:id])
+    @projects = team.projects
   end
   
   # GET /teams/1

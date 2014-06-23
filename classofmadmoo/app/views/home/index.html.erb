@@ -1,9 +1,3 @@
-<%=link_to "Teams", teams_url%> |
-<%=link_to "Projects", projects_url%> |
-<%=link_to "Forums", projects_url%> |
-
-<%=current_user.profesor?%><br>
-
 <h3>Classes</h3>
 <%@teams.each do |team|%>
 	<%=link_to team.name, dashboard_url(team.id)%><br>
