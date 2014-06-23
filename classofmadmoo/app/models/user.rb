@@ -6,10 +6,10 @@ class User < ActiveRecord::Base
   belongs_to :user_role
   
   def profesor?
-    self.user_role.profesor?
+    self.user_role.profesor? if !self.user_role.blank?
   end
   
   def student?
-    self.user_role.student?
+    self.user_role.student? if !self.user_role.blank?
   end
 end
