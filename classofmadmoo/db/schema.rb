@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20140623124451) do
 
   add_index "projects", ["team_id"], name: "index_projects_on_team_id", using: :btree
 
+  create_table "posts", force: true do |t|
+    t.integer  "team_id"
+    t.string   "name"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["team_id"], name: "index_posts_on_team_id", using: :btree
+
   create_table "teams", force: true do |t|
     t.string   "name"
     t.datetime "created_at"

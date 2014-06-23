@@ -12,7 +12,7 @@
   <tbody>
     <% @forums.each do |forum| %>
       <tr>
-        <td><%= forum.team %></td>
+        <td><%= forum.team.name %></td>
         <td><%= forum.name %></td>
         <td><%= link_to 'Show', forum %></td>
         <td><%= link_to 'Edit', edit_forum_path(forum) %></td>
