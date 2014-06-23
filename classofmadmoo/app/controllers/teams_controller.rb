@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
   def dashboard
     team = Team.find(params[:id])
     @projects = team.projects
+    @students = User.where(team: team)
   end
   
   # GET /teams/1
