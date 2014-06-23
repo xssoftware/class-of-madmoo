@@ -10,6 +10,9 @@
       </ul>
     </div>
   <% end %>
+  <div><%= f.label :team %><br />
+    <%= f.select  :team_id, Team.all.collect {|team| [team.name, team.id]} %>
+	</div>
   <div><%= f.label :user_role %><br />
     <%= f.select  :user_role_id, UserRole.all.collect {|ur| [ur.name, ur.id]} %>
 	</div>

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :user_role
+  belongs_to :team
   
   before_save do
     self.user_role_id = UserRole.where(name: "student").first.id if self.user_role_id.blank?
