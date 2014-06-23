@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :user_role
   
+  before_save do
+    self.user_role_id = UserRole.where(name: "student").first.id if self.user_role_id.blank?
+  end
+    
   def profesor?
     self.user_role.profesor? if !self.user_role.blank?
   end
