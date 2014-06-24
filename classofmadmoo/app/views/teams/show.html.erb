@@ -4,6 +4,16 @@
   <strong>Name:</strong>
   <%= @team.name %>
 </p>
+<table>
+	<thead>
+		<th>Projects</th>
+	</thead>
+	<tbody>
+		<% @projects.all.each do |project| %>
+			<tr><td><%=link_to project.name , project_url(project)%></td></tr>
 
+		<% end %>
+	</tbody>
+<table>
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
