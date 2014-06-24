@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :teams
 
   resources :posts
+  get "post/new/:forum_id" => "posts#new", as: "new_forum_post"
 
   devise_for :users
   get 'home/index'

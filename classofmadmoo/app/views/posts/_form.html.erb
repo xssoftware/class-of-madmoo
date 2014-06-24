@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
-  <% if @forum.errors.any? %>
+  <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this forum from being saved:</h2>
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
       <% @post.errors.full_messages.each do |message| %>
@@ -12,16 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :team_id %><br>
-    <%= f.select  :team_id, Team.all.collect {|t| [t.name, t.id]} %>
+    <%= f.hidden_field :forum_id, :value => @forum %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :body %><br>
-    <%= f.text_field :body %>
+    <%= f.text_area :body %>
   </div>
   <div class="actions">
     <%= f.submit %>

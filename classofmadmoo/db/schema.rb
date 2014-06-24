@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623124451) do
+ActiveRecord::Schema.define(version: 20140624194402) do
 
   create_table "forums", force: true do |t|
     t.integer  "team_id"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20140623124451) do
   end
 
   add_index "forums", ["team_id"], name: "index_forums_on_team_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "forum_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["forum_id"], name: "index_posts_on_forum_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.integer  "team_id"
@@ -32,16 +44,6 @@ ActiveRecord::Schema.define(version: 20140623124451) do
   end
 
   add_index "projects", ["team_id"], name: "index_projects_on_team_id", using: :btree
-
-  create_table "posts", force: true do |t|
-    t.integer  "team_id"
-    t.string   "name"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "posts", ["team_id"], name: "index_posts_on_team_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"
