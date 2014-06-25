@@ -27,7 +27,7 @@
 		<% @assignments.all.each do |assignment| %>
 			<tr>
 				<td>
-					<% if current_user.profesor? || current_user = assignment.user %>
+					<% if current_user.profesor? || current_user.id == assignment.user.id %>
 					<td>
 						<%=link_to assignment.title , assignment_url(assignment)%>
 					</td>
@@ -45,5 +45,7 @@
 <table>
 <%= link_to 'Send Assignment', new_student_assignment_path(@work_assignment, @work_assignment.project) %> |
 
-<%= link_to 'Edit', edit_work_assignment_path(@work_assignment) %> |
+<% if current_user.profesor? %>
+	<%= link_to 'Edit', edit_work_assignment_path(@work_assignment) %> |
+<% end %>
 <%= link_to 'Back', work_assignments_path %>
