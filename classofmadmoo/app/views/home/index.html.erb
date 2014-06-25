@@ -4,7 +4,33 @@
 <% if current_user.student? %>
 	<h1>Welcome Student</h1>
 <% end %>
+<% if current_user.team_id != nil %>
+	<table>
+		<thead>
+			<th><h1>Projects</h1></th>
+		</thead>
+		<tbody>
+			<% @projects.all.each do |project| %>
+				<tr>
+					<td><%= link_to project.name, project_url(project) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	<table>
 
+	<table>
+		<thead>
+			<th><h1>Work Assignments</h1></th>
+		</thead>
+		<tbody>
+			<% @work_assignments.each do |assignment| %>
+				<tr>
+					<td><%= link_to assignment['title'], work_assignment_url(assignment['id']) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	<table>
+<% end %>
 <h3>Classes</h3>
 <%@teams.each do |team|%>
 	<%=link_to team.name, dashboard_url(team.id)%><br>
