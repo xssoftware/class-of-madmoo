@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @work_assignment.user.email %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @work_assignment.project.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @work_assignment.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @work_assignment.body %>
+</p>
+<table>
+	<thead>
+		<th>Student Assignments</th>
+	</thead>
+	<tbody>
+		<% @assignments.all.each do |assignment| %>
+			<tr>
+				<td>
+					<% if current_user.profesor? || current_user = assignment.user %>
+					<td>
+						<%=link_to assignment.title , assignment_url(assignment)%>
+					</td>
+					<% else %>
+						<td>
+							<%=assignment.title %>
+						</td>
+					<% end %>
+				</td>
+				<td><%= assignment.user.email %></td>
+			</tr>
+
+		<% end %>
+	</tbody>
+<table>
+<%= link_to 'Send Assignment', new_student_assignment_path(@work_assignment, @work_assignment.project) %> |
+
+<%= link_to 'Edit', edit_work_assignment_path(@work_assignment) %> |
+<%= link_to 'Back', work_assignments_path %>

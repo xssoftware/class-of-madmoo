@@ -2,7 +2,7 @@
 
 <p>
   <strong>Team:</strong>
-  <%= @project.team.name %>
+  <%= link_to @project.team.name, team_url(@project.team) %>
 </p>
 
 <p>
@@ -19,6 +19,23 @@
   <strong>Deadline:</strong>
   <%= @project.deadline %>
 </p>
+<table>
+	<thead>
+		<th>Work Assignments</th>
+	</thead>
+	<tbody>
+		<% @work_assignments.all.each do |assignment| %>
+			<tr>
+				<td>
+					<%=link_to assignment.title , work_assignment_url(assignment)%>
+				</td>
+				<td><%= assignment.user.email %></td>
+			</tr>
 
+		<% end %>
+	</tbody>
+<table>
+
+<%= link_to 'Create Assignment', new_project_work_assignment_path(@project) %> |
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

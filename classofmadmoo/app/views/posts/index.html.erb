@@ -15,7 +15,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.user.email %></td>
-        <td><%= post.forum.name %></td>
+        <td><%= link_to post.forum.name, forum_url(post.forum) %></td>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
         <td><%= link_to 'Show', post %></td>

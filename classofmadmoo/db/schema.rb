@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624194402) do
+ActiveRecord::Schema.define(version: 20140624234913) do
+
+  create_table "assignments", force: true do |t|
+    t.integer  "work_assignments_id"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assignments", ["project_id"], name: "index_assignments_on_project_id", using: :btree
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
+  add_index "assignments", ["work_assignments_id"], name: "index_assignments_on_work_assignments_id", using: :btree
 
   create_table "forums", force: true do |t|
     t.integer  "team_id"
@@ -78,5 +92,17 @@ ActiveRecord::Schema.define(version: 20140624194402) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
+
+  create_table "work_assignments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "work_assignments", ["project_id"], name: "index_work_assignments_on_project_id", using: :btree
+  add_index "work_assignments", ["user_id"], name: "index_work_assignments_on_user_id", using: :btree
 
 end

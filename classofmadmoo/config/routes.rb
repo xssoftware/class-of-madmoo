@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :work_assignments
+
+  resources :assignments
+
   resources :users, only: [:index, :edit, :update]
   
   resources :forums
@@ -11,7 +15,9 @@ Rails.application.routes.draw do
 
   resources :posts
   get "post/new/:forum_id" => "posts#new", as: "new_forum_post"
-
+  get "assignment/new/:work_assignment_id/:project_id" => "assignments#new", as: "new_student_assignment"
+  
+  get "work_assignment/new/:project_id" => "work_assignments#new", as: "new_project_work_assignment"
   devise_for :users
   get 'home/index'
 

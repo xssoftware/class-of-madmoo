@@ -1,0 +1,33 @@
+<h1>Listing assignments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Project</th>
+      <th>Work Assignment</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.user.email %></td>
+        <td><%= link_to assignment.project.name, project_url(assignment.project)%></td>
+        <td><%= link_to assignment.work_assignment.title, work_assignment_url(assignment.project)%></td>
+        <td><%= assignment.title %></td>
+        <td><%= assignment.body %></td>
+        <td><%= link_to 'Show', assignment %></td>
+        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assignment', new_assignment_path %>

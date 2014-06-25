@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
     team = Team.find(params[:id])
     @projects = team.projects
     @students = User.where(team: team)
+    @forums = team.forums.all
   end
   
   # GET /teams/1
@@ -17,6 +18,7 @@ class TeamsController < ApplicationController
   def show
     @projects = @team.projects.all
     @forums = @team.forums.all
+    @students = User.where(team: @team)
   end
 
   # GET /teams/new

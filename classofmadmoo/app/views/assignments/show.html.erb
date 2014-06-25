@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Work assignment:</strong>
+  <%= link_to @assignment.work_assignment.title, work_assignment_url(@assignment.work_assignment) %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @assignment.user.email %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= link_to @assignment.project.name, project_url(@assignment.project) %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @assignment.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @assignment.body %>
+</p>
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>

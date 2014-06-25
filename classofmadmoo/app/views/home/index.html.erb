@@ -1,4 +1,9 @@
-<%=current_user.profesor?%><br>
+<% if current_user.profesor? %>
+	<h1>Welcome Professor</h1>
+<% end %>
+<% if current_user.student? %>
+	<h1>Welcome Student</h1>
+<% end %>
 
 <h3>Classes</h3>
 <%@teams.each do |team|%>

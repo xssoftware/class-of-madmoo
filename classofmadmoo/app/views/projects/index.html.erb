@@ -14,7 +14,7 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.team.name %></td>
+        <td><%= link_to project.team.name, team_url(project.team) %></td>
         <td><%= project.name %></td>
         <td><%= project.body %></td>
         <td><%= project.deadline %></td>

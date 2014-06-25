@@ -7,7 +7,7 @@
 
 <p>
   <strong>Forum:</strong>
-  <%= @post.forum.name %>
+  <%= link_to @post.forum.name, forum_url(@post.forum) %>
 </p>
 
 <p>
